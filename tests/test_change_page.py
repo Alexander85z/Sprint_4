@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from page_objects.order_page import OrderingPage
 
+    #Тут тест хромает
 
 class TestChangePage:
     order_header = [By.CLASS_NAME, 'Button_Button__ra12g']
@@ -15,20 +16,18 @@ class TestChangePage:
         main_page = OrderingPage(driver)
         main_page.click_order_page(self.order_header)
         main_page.click_order_page(self.header_buttom_scooter)
-
-        main_page.find_element(By.CLASS_NAME, 'Button_Button__ra12g')
-        sleep(3)
         elm = driver.find_element(By.XPATH, "//div[@class='Home_HomePage__ZXKIX']")
         elm_id = elm.get_attribute('class')
         assert elm_id == 'Home_HomePage__ZXKIX'
 
+
+
     def test_main_page_dzen(self, driver):
-        maim_page = OrderingPage(driver)
-        maim_page.click_order_page(self.header_buttom_yandex)
-        sleep(3)
-
-        driver.switch_to_window(driver.window_handles[1])
-        elm = driver.find_element(By.XPATH, "//div[@class='dzen-desktop__teaser-3u']")
-        elm_id = elm.get_attribute('class')
-        assert elm_id == 'dzen-desktop__teaser-3u'
-
+        window_before = driver.window_handles[0]
+        driver.find_element(By.XPATH, "//a[@href='//yandex.ru']").click()
+        sleep(5)
+        window_after = driver.window_handles[1]
+        driver.switch_to.window(window_after)
+        elm = driver.find_element(By.XPATH, "//div[contains(text(), 'Удобный и быстрый Яндекс.Браузер')]")
+        elm_id = elm.text  # тут вытаскиваю класс
+        assert elm_id == 'Удобный и быстрый Яндекс.Браузер'  # ну и тут сравниваю
