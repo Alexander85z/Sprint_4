@@ -1,6 +1,3 @@
-from time import sleep
-
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
@@ -42,14 +39,7 @@ class OrderingPage():
         element = self.driver.find_element(By.XPATH, "//div[contains(text(), 'Когда аренда заканчивается')]")
         return self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
-    #может не нужно
-    def switch_window(self):
-        browserTabs = self.driver.WindowHandles
-        return self.driver.switch_to_window().Window(browserTabs[1])
 
-    def search_element(self, element):
-        return WebDriverWait(self.driver, 5).until(
-            expected_conditions.element_to_be_clickable(element)).find_element(element)
 
 
 

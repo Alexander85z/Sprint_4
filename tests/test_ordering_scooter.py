@@ -1,5 +1,4 @@
-from time import sleep
-
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
@@ -13,13 +12,13 @@ class TestOrdering:
     order_yes = [By.XPATH, "//button[contains(text(), 'Да')]"]
     order_complete = [By.XPATH, "//button[contains(text(), 'Посмотреть статус')]"]
 
-
+    @allure.title('Работа кнопки "Заказать" в хэдере 1')
+    @allure.description("Набор данных 1")
     def test_ordering_scooter_header_button_check_1(self, driver):
         order_page = OrderingPage(driver)
         # Заполнение формы заказчика самоката
         order_page.wait_click_order_page(self.order_header)
         order_page.writing_customer_page_check_1()
-        driver.find_element()
         order_page.click_order_page(self.button_next)
         # Заполнение формы самоката
         order_page.writing_scooter_page_check_1()
@@ -30,8 +29,8 @@ class TestOrdering:
                 (self.order_complete))).text == 'Посмотреть статус'
         driver.quit()
 
-
-
+    @allure.title('Работа кнопки "Заказать" в футере 1')
+    @allure.description("Набор данных 1")
     def test_ordering_scooter_footer_button_check_1(self, driver):
 
         order_page = OrderingPage(driver)
@@ -51,7 +50,8 @@ class TestOrdering:
                 (self.order_complete))).text == 'Посмотреть статус'
         driver.quit()
 
-
+    @allure.title('Работа кнопки "Заказать" в хэдере 2')
+    @allure.description("Набор данных 2")
     def test_ordering_scooter_header_button_check_2(self, driver):
         order_page = OrderingPage(driver)
         # Заполнение формы заказчика самоката
@@ -67,8 +67,8 @@ class TestOrdering:
                 (self.order_complete))).text == 'Посмотреть статус'
         driver.quit()
 
-
-
+    @allure.title('Работа кнопки "Заказать" в футере 2')
+    @allure.description("Набор данных 2")
     def test_ordering_scooter_footer_button_check_2(self, driver):
 
         order_page = OrderingPage(driver)

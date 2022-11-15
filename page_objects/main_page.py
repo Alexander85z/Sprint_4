@@ -1,9 +1,4 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
-
-
 
 
 class MainPage():
@@ -20,10 +15,3 @@ class MainPage():
         return elm_id
 
 
-#-----------------------------------------------------
-#class TestMainQuestion:
-
-#    def test_main_question_0(self, driver):
- #       main_question_7 = [By.ID, 'accordion__heading-7']
- #       ya_question = MainPage(driver)
-  #      ya_question.click_question(main_question_7)
