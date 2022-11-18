@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from page_objects.order_page import OrderingPage
-from locators.locator_ordering_scooter import *
+from locators.locator_ordering_scooter import LocatorOrderingPage
 
 class TestOrdering:
 
@@ -13,13 +13,13 @@ class TestOrdering:
     def test_ordering_scooter_header_button_check_1(self, driver):
         order_page = OrderingPage(driver)
         # Заполнение формы заказчика самоката
-        order_page.wait_click_order_page(order_header)
+        order_page.wait_click_order_page(LocatorOrderingPage.order_header)
         order_page.writing_customer_page_check_1()
-        order_page.click_order_page(button_next)
+        order_page.click_order_page(LocatorOrderingPage.button_next)
         # Заполнение формы самоката
         order_page.writing_scooter_page_check_1()
-        order_page.click_order_page(select_button_order)
-        order_page.click_order_page(order_yes)
+        order_page.click_order_page(LocatorOrderingPage.select_button_order)
+        order_page.click_order_page(LocatorOrderingPage.order_yes)
         assert WebDriverWait(driver, 3).until(
             expected_conditions.visibility_of_element_located(
                 (order_complete))).text == 'Посмотреть статус'
@@ -33,17 +33,17 @@ class TestOrdering:
         #скролл страницы
         order_page.scroll_page()
         # Заполнение формы заказчика самоката
-        order_page.wait_click_order_page(order_footer)
+        order_page.wait_click_order_page(LocatorOrderingPage.order_footer)
         order_page.writing_customer_page_check_1()
-        order_page.click_order_page(button_next)
+        order_page.click_order_page(LocatorOrderingPage.button_next)
 
         # Заполнение формы даты, цвета и времени аренды самоката
         order_page.writing_scooter_page_check_1()
-        order_page.click_order_page(select_button_order)
-        order_page.click_order_page(order_yes)
+        order_page.click_order_page(LocatorOrderingPage.select_button_order)
+        order_page.click_order_page(LocatorOrderingPage.order_yes)
         assert WebDriverWait(driver, 3).until(
             expected_conditions.visibility_of_element_located(
-                (order_complete))).text == 'Посмотреть статус'
+                (LocatorOrderingPage.order_complete))).text == 'Посмотреть статус'
         driver.quit()
 
     @allure.title('Работа кнопки "Заказать" в хэдере 2')
@@ -51,16 +51,16 @@ class TestOrdering:
     def test_ordering_scooter_header_button_check_2(self, driver):
         order_page = OrderingPage(driver)
         # Заполнение формы заказчика самоката
-        order_page.wait_click_order_page(order_header)
+        order_page.wait_click_order_page(LocatorOrderingPage.order_header)
         order_page.writing_customer_page_check_2()
-        order_page.click_order_page(button_next)
+        order_page.click_order_page(LocatorOrderingPage.button_next)
         # Заполнение формы самоката
         order_page.writing_scooter_page_check_2()
-        order_page.click_order_page(select_button_order)
-        order_page.click_order_page(order_yes)
+        order_page.click_order_page(LocatorOrderingPage.select_button_order)
+        order_page.click_order_page(LocatorOrderingPage.order_yes)
         assert WebDriverWait(driver, 3).until(
             expected_conditions.visibility_of_element_located(
-                (order_complete))).text == 'Посмотреть статус'
+                (LocatorOrderingPage.order_complete))).text == 'Посмотреть статус'
         driver.quit()
 
     @allure.title('Работа кнопки "Заказать" в футере 2')
@@ -71,17 +71,17 @@ class TestOrdering:
         #скролл страницы
         order_page.scroll_page()
         # Заполнение формы заказчика самоката
-        order_page.wait_click_order_page(order_footer)
+        order_page.wait_click_order_page(LocatorOrderingPage.order_footer)
         order_page.writing_customer_page_check_2()
-        order_page.click_order_page(button_next)
+        order_page.click_order_page(LocatorOrderingPage.button_next)
 
         # Заполнение формы даты, цвета и времени аренды самоката
         order_page.writing_scooter_page_check_2()
-        order_page.click_order_page(select_button_order)
-        order_page.click_order_page(order_yes)
+        order_page.click_order_page(LocatorOrderingPage.select_button_order)
+        order_page.click_order_page(LocatorOrderingPage.order_yes)
         assert WebDriverWait(driver, 3).until(
             expected_conditions.visibility_of_element_located(
-                (order_complete))).text == 'Посмотреть статус'
+                (LocatorOrderingPage.order_complete))).text == 'Посмотреть статус'
         driver.quit()
 
 
